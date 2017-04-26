@@ -1,5 +1,7 @@
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 public class front_end implements ActionListener {
 
@@ -33,8 +35,14 @@ public class front_end implements ActionListener {
 
 	
 	private void choose_button_action(ActionEvent evt) {
-		JFileChooser chooser = new JFileChooser();
-		int retuenval = chooser.showOpenDialog(null);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files","txt","xml","pdf","jpeg","png");
+		JFileChooser chooser = new JFileChooser("C:/Users/USER/Desktop/btech");
+		chooser.addChoosableFileFilter(filter);
+		int return_val = chooser.showOpenDialog(null);
+		if(return_val==JFileChooser.APPROVE_OPTION){
+			System.out.println(chooser.getSelectedFile().getAbsolutePath());
+		}
+			
 			}
 
 	public static void main(String[] args) {
